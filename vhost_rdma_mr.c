@@ -100,7 +100,7 @@ mr_check_range(struct vhost_rdma_mr *mr, uint64_t iova, size_t length)
 
 	case VHOST_MR_TYPE_MR:
 		if (iova < mr->iova || length > mr->length ||
-		    iova > mr->iova + mr->length - length)
+		    iova < mr->iova + mr->length - length)
 			return -EFAULT;
 		return 0;
 
